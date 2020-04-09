@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import datetime
+import os
 
 def do_magic():
    now = datetime.datetime.now()
@@ -8,6 +9,9 @@ def do_magic():
 
 
 if __name__ == "__main__":
-   print("Content-Type: text/html\n\n")
-   print(do_magic())
+   if "REQUEST_URI" in os.environ:
+      print("Content-Type: text/html\n\n")
+      print(do_magic())
+   else:
+      print(do_magic())
 
